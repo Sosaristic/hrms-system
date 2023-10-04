@@ -1,0 +1,15 @@
+name: Format Code
+on:
+  push:
+    branches:
+      - "**"
+      - "!main"
+jobs:
+  prettify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: npm ci
+      - name: prettify code
+        run: npx prettier --write .
