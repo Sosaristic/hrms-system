@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,13 +8,53 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: {
+          100: '#e6e2f8',
+          200: '#cec4f6',
+          300: '#b2a2f9',
+          400: '#9178fa',
+          500: '#7152f3',
+          600: '#5d3de7',
+          700: '#4f31d0',
+          800: '#3517b4',
+          900: '#250c92',
+        },
+        secondary: {
+          100: '#e1f1bc',
+          200: '#cee993',
+          300: '#bcde6b',
+          400: '#afd751',
+          500: '#a3d139',
+          600: '#97bd33',
+          700: '#88a52a',
+          800: '#798d21',
+          900: '#626615',
+        },
+        tertiary: {
+          100: '#f0b0d9',
+          200: '#e67bc2',
+          300: '#d846ab',
+          400: '#cd0d9b',
+          500: '#b21589',
+          600: '#af0a87',
+          700: '#9b0982',
+          800: '#8a087c',
+          900: '#6c0772',
+        },
+        dark: '#16151C',
+        gray: '#a2a1a8',
+        light: '#d9e1e1',
+
+        colorOption: {
+          1: '#30be82',
+          2: '#30beb6',
+          3: '#5d30be',
+          4: '#3 04fbe',
+        },
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
