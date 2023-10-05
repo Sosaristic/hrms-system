@@ -8,7 +8,7 @@ import * as Yup from "yup"
       .required("no email provided"),
     password: Yup.string()
       .required("No password provided")
-      .min(4, "Password is too short - should be 4 chars minimum.")
+      .min(8, "Password is too short - should be 8 chars minimum.")
       .matches(/[a-zA-Z\d]/, "Password can only contain Latin letters."),
   });
 

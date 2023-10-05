@@ -14,7 +14,6 @@ type FormValues = {
 };
 
 export default function Layout() {
-  const pathname = usePathname().slice(7);
   const [checked, setChecked] = useState(false);
 
   const formik = useFormik<FormValues>({
@@ -29,8 +28,19 @@ export default function Layout() {
     },
   });
 
+  const setLoginButtonToInvalid = () => {
+    if (
+      formik.errors.email ||
+      formik.errors.password ||
+      !formik.values.email ||
+      !formik.values.password
+    ) {
+      return true;
+    }
+  };
+
   return (
-    <main className="font-inter mx-auto flex min-h-screen w-11/12 flex-col justify-center md:w-2/3 lg:w-1/3">
+    <main className="mx-auto flex min-h-screen w-11/12 flex-col justify-center font-inter md:w-2/3 lg:w-1/3">
       <Image
         src="/svg/app_name_logo.svg"
         alt="app logo"
@@ -41,12 +51,7 @@ export default function Layout() {
       />
 
       <h2 className="font-lexend text-2xl font-bold">Welcome 👋 </h2>
-      <Link
-        href={`/login/${pathname == "admin" ? "employee" : "admin"}`}
-        className="mt-4 w-fit text-sm text-primary-500 hover:underline"
-      >
-        Login as {pathname === "admin" ? "Employee" : "Admin"} here
-      </Link>
+
       <form onSubmit={formik.handleSubmit} className="mt-4 flex flex-col gap-4">
         <TextField
           {...formik.getFieldProps("email")}
@@ -69,7 +74,9 @@ export default function Layout() {
           }
         />
 
-        <Button type="submit">Login</Button>
+        <Button type="submit" disabled={setLoginButtonToInvalid()}>
+          Login
+        </Button>
         <div className="flex items-center gap-2 text-sm">
           <input
             type="checkbox"
