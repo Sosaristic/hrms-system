@@ -53,6 +53,10 @@ const config: Config = {
           4: '#3 04fbe',
         },
       },
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        lexend: ["var(--font-lexend)"]
+      }
     },
   },
   plugins: [],
