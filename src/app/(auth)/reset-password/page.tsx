@@ -23,9 +23,9 @@ export default function Page() {
     },
   });
   return (
-    <main className="mx-auto flex min-h-screen w-11/12 flex-col justify-center gap-4 py-6 md:w-2/3 lg:w-1/3">
+    <main className="relative mx-auto flex min-h-screen w-11/12 flex-col justify-center gap-4 py-6 md:w-2/3 lg:w-1/3">
       <button
-        className="flex w-fit items-center gap-2 text-2xl"
+        className="absolute top-6 flex w-fit items-center gap-2 text-2xl"
         onClick={() => router.back()}
       >
         <ChevronLeftIcon className="h-8 w-8  text-black" /> Back
@@ -47,7 +47,9 @@ export default function Page() {
             formik.errors.email && formik.touched.email && formik.errors.email
           }
         />
-        <Button type="submit">Send OTP</Button>
+        <Button type="submit" size="fullwidth">
+          Send OTP
+        </Button>
       </form>
     </main>
   );

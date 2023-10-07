@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* svg active color for sidebar */
+
+  .svg-color {
+    filter: invert(17%) sepia(50%) saturate(3276%) hue-rotate(245deg)
+      brightness(71%) contrast(125%);
+  }
+}

@@ -74,7 +74,11 @@ export default function Layout() {
           }
         />
 
-        <Button type="submit" disabled={setLoginButtonToInvalid()}>
+        <Button
+          type="submit"
+          size="fullwidth"
+          disabled={setLoginButtonToInvalid()}
+        >
           Login
         </Button>
         <div className="flex items-center gap-2 text-sm">
