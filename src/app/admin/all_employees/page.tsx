@@ -81,3 +81,48 @@ export default function AllEmployees() {
     </div>
   );
 }
+
+const dummyEmployees = [
+  {
+    employee_name: "Alice Johnson",
+    employee_id: 101,
+    department: "Marketing",
+    office: "Sales",
+    imageUrl: "/images/girl.jpg",
+  },
+  {
+    employee_name: "David Smith",
+    employee_id: 202,
+    department: "Development",
+    office: "Engineering",
+    imageUrl: "/images/girl.jpg",
+  },
+  {
+    employee_name: "Emily Davis",
+    employee_id: 303,
+    department: "Finance",
+    office: "Accounting",
+    imageUrl: "/images/girl.jpg",
+  },
+  {
+    employee_name: "John Doe",
+    employee_id: 404,
+    department: "Customer Support",
+    office: "Service",
+    imageUrl: "/images/girl.jpg",
+  },
+  {
+    employee_name: "Linda Johnson",
+    employee_id: 505,
+    department: "Human Resources",
+    office: "Admin",
+    imageUrl: "/images/girl.jpg",
+  },
+  {
+    employee_name: "Michael Clark",
+    employee_id: 606,
+    department: "Sales",
+    office: "Marketing",
+    imageUrl: "/images/girl.jpg",
+  },
+];
