@@ -58,13 +58,13 @@ export default function AllEmployees() {
               onClick={() => {
                 /*logic for edit event*/
               }}
-              className="h-8 w-8 cursor-pointer hover:text-blue-700"
+              className="h-6 w-6 cursor-pointer hover:text-blue-700"
             />
             <TrashIcon
               onClick={() => {
                 /*logic for delete event*/
               }}
-              className="h-8 h-8 w-8 w-8 cursor-pointer hover:text-blue-700"
+              className="h-6 w-6 cursor-pointer hover:text-blue-700"
             />
           </div>
         </div>
