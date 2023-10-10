@@ -13,16 +13,11 @@ type EmployeeType = {
 };
 
 export default function AllEmployees() {
-  const [selectedEmployee, setSelectedEmployee] = useState<EmployeeType | null>(
-    null,
-  );
-  const handleClickEmployee = (employee: EmployeeType) => {
-    setSelectedEmployee(employee);
-  };
+  const handleClickEmployee = (employee: EmployeeType) => {};
 
   return (
     <div>
-      <div className="mb-6 grid grid-cols-5 gap-0 p-0">
+      <div className="mb-6 hidden grid-cols-1 gap-0 p-0 md:block md:grid md:grid-cols-5">
         <div>Employee Name</div>
         <div>Employee ID</div>
         <div>Department</div>
@@ -31,13 +26,13 @@ export default function AllEmployees() {
       </div>
       {dummyEmployees.map((employee) => (
         <div
-          className="mb-4 grid grid-cols-5 gap-0 p-0 "
           key={employee.employee_id}
+          className=" mx-10 mx-4 mb-4 grid grid-cols-1 place-items-center gap-0 rounded-lg border-4 border-solid border-primary-100 px-4 py-4 shadow-lg  md:m-0 md:grid-cols-5 md:place-items-start md:border-none md:p-0 md:py-2 md:shadow-none"
         >
           <div
-            className="flex cursor-pointer hover:text-blue-700"
+            className="flex cursor-pointer  hover:text-blue-700"
             onClick={() => {
-              handleClickEmployee(employee);
+              // handleClickEmployee(employee);
             }}
           >
             <Avatar
@@ -69,15 +64,6 @@ export default function AllEmployees() {
           </div>
         </div>
       ))}
-      {selectedEmployee && (
-        <Overlay>
-          <User
-            name={selectedEmployee!.employee_name}
-            imageUrl={selectedEmployee!.imageUrl}
-            role={selectedEmployee!.office}
-          ></User>
-        </Overlay>
-      )}
     </div>
   );
 }
