@@ -3,19 +3,19 @@ import { Avatar } from "@/components";
 interface UserProps {
   name: string;
   imageUrl: string;
-  role: string;
+  role?: string;
 }
 function User({ name, imageUrl, role }: UserProps) {
   return (
-    <div className="mx-auto max-w-xs rounded-lg bg-white p-6 shadow-lg">
-      <div className="mb-5 flex items-center justify-center">
-        <Avatar imageUrl={imageUrl} size="medium" rounded="md" alt={name} />
-      </div>
+    <div className=" flex items-center gap-4 rounded-lg bg-white shadow-lg">
+      <Avatar imageUrl={imageUrl} size="small" alt={name} />
 
-      <h2 className="text-gray-800 mb-2 text-center text-xl font-semibold">
-        {name}
-      </h2>
-      <h3 className="text-gray-600 mb-4 text-center text-sm">{role}</h3>
+      <div>
+        <h2 className="text-gray-800 text-center font-lexend text-sm">
+          {name}
+        </h2>
+        <h3 className="text-center  text-xs text-gray">{role}</h3>
+      </div>
     </div>
   );
 }

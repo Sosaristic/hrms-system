@@ -47,8 +47,12 @@ export default function Page() {
             formik.errors.email && formik.touched.email && formik.errors.email
           }
         />
-        <Button type="submit" size="fullwidth">
-          Send OTP
+        <Button
+          type="submit"
+          size="fullwidth"
+          onClick={() => console.log("Send link")}
+        >
+          Send Link
         </Button>
       </form>
     </main>

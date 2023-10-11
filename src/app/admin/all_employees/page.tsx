@@ -2,7 +2,13 @@
 
 import React, { useState, useRef } from "react";
 import { Avatar, Overlay, User } from "@/components";
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import {
+  EllipsisVerticalIcon,
+  PencilIcon,
+  PencilSquareIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 type EmployeeType = {
   employee_name: string;
@@ -12,58 +18,53 @@ type EmployeeType = {
   imageUrl: string;
 };
 
+const headerText1 = ["Name", "ID", "Dept", "Action"];
+const headerText2 = ["Name", "ID", "Dept", "Office", "Action"];
+
 export default function AllEmployees() {
   const handleClickEmployee = (employee: EmployeeType) => {};
 
   return (
     <div>
-      <div className="mb-6 hidden grid-cols-1 gap-0 p-0 md:block md:grid md:grid-cols-5">
-        <div>Employee Name</div>
-        <div>Employee ID</div>
-        <div>Department</div>
-        <div>Office</div>
-        <div>Action</div>
+      <div className="text-xm md:text-md relative my-4 flex gap-2  text-gray ">
+        {headerText1.map((text, id) => (
+          <p key={id} className="min-w-[20%] flex-1 text-center text-sm ">
+            {text}
+          </p>
+        ))}
       </div>
-      {dummyEmployees.map((employee) => (
-        <div
-          key={employee.employee_id}
-          className=" mx-10 mx-4 mb-4 grid grid-cols-1 place-items-center gap-0 rounded-lg border-4 border-solid border-primary-100 px-4 py-4 shadow-lg  md:m-0 md:grid-cols-5 md:place-items-start md:border-none md:p-0 md:py-2 md:shadow-none"
-        >
-          <div
-            className="flex cursor-pointer  hover:text-blue-700"
-            onClick={() => {
-              // handleClickEmployee(employee);
-            }}
-          >
-            <Avatar
-              imageUrl={employee.imageUrl}
-              size="small"
-              rounded="sm"
-              alt={employee.employee_name}
-              className="mr-4"
-            />
 
-            {employee.employee_name}
-          </div>
-          <div>{employee.employee_id}</div>
-          <div>{employee.department}</div>
-          <div>{employee.office}</div>
-          <div className="flex">
-            <PencilSquareIcon
-              onClick={() => {
-                /*logic for edit event*/
-              }}
-              className="h-6 w-6 cursor-pointer hover:text-primary-800"
-            />
-            <TrashIcon
-              onClick={() => {
-                /*logic for delete event*/
-              }}
-              className="h-6 w-6 cursor-pointer hover:text-primary-800"
-            />
-          </div>
-        </div>
-      ))}
+      <div className="flex flex-col gap-4">
+        {dummyEmployees.map((employee) => (
+          <Link
+            href={`/admin/all_employees/${employee.employee_id}`}
+            key={employee.employee_id}
+            className="flex items-center gap-4 px-2 font-inter text-xs shadow-sm hover:bg-primary-100"
+          >
+            <div className="w-3/9 flex flex-1 items-center gap-2">
+              <Avatar
+                imageUrl={employee.imageUrl}
+                alt={employee.employee_name}
+                size="small"
+              />
+
+              <p className="text-center">{employee.employee_name}</p>
+            </div>
+            <p className="w-2/9 flex-1  text-center">{employee.employee_id}</p>
+
+            <p className="w-3/9 flex-1  text-center">{employee.department}</p>
+
+            <div className="w-1/9 ml-auto flex flex-1 flex-col items-end gap-4  py-1 md:flex-row md:justify-center">
+              <button className="z-10 p-1 hover:text-primary-600">
+                <PencilIcon className="h-4 w-4 " />
+              </button>
+              <button className="z-10 p-1 hover:text-primary-600">
+                <TrashIcon className="h-4 w-4" />
+              </button>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
@@ -73,42 +74,36 @@ const dummyEmployees = [
     employee_name: "Alice Johnson",
     employee_id: 101,
     department: "Marketing",
-    office: "Sales",
     imageUrl: "/images/girl.jpg",
   },
   {
     employee_name: "David Smith",
     employee_id: 202,
     department: "Development",
-    office: "Engineering",
     imageUrl: "/images/girl.jpg",
   },
   {
     employee_name: "Emily Davis",
     employee_id: 303,
     department: "Finance",
-    office: "Accounting",
     imageUrl: "/images/girl.jpg",
   },
   {
     employee_name: "John Doe",
     employee_id: 404,
     department: "Customer Support",
-    office: "Service",
     imageUrl: "/images/girl.jpg",
   },
   {
     employee_name: "Linda Johnson",
     employee_id: 505,
     department: "Human Resources",
-    office: "Admin",
     imageUrl: "/images/girl.jpg",
   },
   {
     employee_name: "Michael Clark",
     employee_id: 606,
     department: "Sales",
-    office: "Marketing",
     imageUrl: "/images/girl.jpg",
   },
 ];
