@@ -78,6 +78,7 @@ export default function Layout() {
           type="submit"
           size="fullwidth"
           disabled={setLoginButtonToInvalid()}
+          onClick={() => console.log("login")}
         >
           Login
         </Button>
