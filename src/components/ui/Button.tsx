@@ -6,6 +6,7 @@ type buttonProps = {
   type: "button" | "submit";
   children: ReactNode;
   disabled?: boolean;
+  onClick: () => void;
   className?: string;
 };
 
@@ -15,6 +16,7 @@ export default function Button({
   children,
   disabled,
   className,
+  onClick,
 }: buttonProps) {
   const normal =
     "bg-primary-500 text-white rounded-md hover:bg-primary-600 disabled:bg-primary-200 transition-colors duration-150 px-2 w-fit h-[3.5rem]";
