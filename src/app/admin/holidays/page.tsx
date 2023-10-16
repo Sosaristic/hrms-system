@@ -149,6 +149,7 @@ export default function Page() {
       >
         {holidays.map((holiday, id) => (
           <div
+            key={id}
             className={`md:text-md m-5 flex gap-2 border-l-2 pl-2 text-sm ${
               holiday.upcoming
                 ? " border-l-primary-800"
