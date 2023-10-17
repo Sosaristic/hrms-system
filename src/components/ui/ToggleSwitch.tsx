@@ -15,9 +15,9 @@ const ToggleSwitch = ({ isChecked, updateToggleState }: ToggleSwitchProps) => {
           checked={isChecked}
           onChange={handleToggle}
         />
-        <div className="toggle__line h-8 w-12 rounded-full bg-secondary-500 shadow-inner"></div>
+        <div className="toggle__line h-6 w-10 rounded-full bg-secondary-500 shadow-inner md:h-8 md:w-12"></div>
         <div
-          className={`toggle__dot absolute top-0 h-8 w-8 rounded-full bg-white shadow ${
+          className={`toggle__dot absolute top-0 h-6 w-6 rounded-full bg-white shadow md:h-8 md:w-8 ${
             isChecked ? "left-4" : "left-0}"
           } `}
         ></div>
