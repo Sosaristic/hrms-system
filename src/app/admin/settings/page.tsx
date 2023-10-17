@@ -30,7 +30,7 @@ export default function Page() {
   };
 
   return (
-    <div className="mb- m-12 h-40">
+    <div className="mb- m-12 h-40 text-xs md:text-sm">
       <div className="mb-10 grid grid-cols-2">
         <p className="text-dark">Appearance</p>
         <div className="justify-self-end">
