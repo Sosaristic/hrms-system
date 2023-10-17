@@ -17,11 +17,11 @@ export default function DepartmentsCard({
   members: MemberProps[];
 }) {
   return (
-    <div className="m-4 rounded-lg border-2 border-primary-100">
+    <div className="md:text-md m-4 rounded-lg border-2 border-primary-100 text-sm">
       <div className="m-4 flex flex-wrap justify-between border-b-2 border-b-primary-100 pb-4">
         <span className="block">
           <p className="flex-1">{departmentName}</p>
-          <p className="text-sm text-gray">{`${members.length} members`}</p>
+          <p className="text:xs text-gray md:text-sm">{`${members.length} members`}</p>
         </span>
 
         <span>
