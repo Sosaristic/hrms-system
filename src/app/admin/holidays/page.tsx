@@ -76,7 +76,7 @@ export default function Page() {
   return (
     <>
       <div
-        className="flex pl-2 md:justify-between md:pl-5"
+        className="mt-2 flex items-center justify-center pl-2 md:justify-between md:pl-5"
         onClick={() => {
           setSearchFullWidth(false);
         }}
@@ -84,7 +84,7 @@ export default function Page() {
         <Button
           type="button"
           size="small"
-          className="w-10 bg-white md:hidden"
+          className="w-10 bg-white hover:bg-transparent md:hidden"
           onClick={() => {}}
         >
           <MagnifyingGlassIcon
@@ -112,20 +112,22 @@ export default function Page() {
               type="search"
               placeholder="search"
               className={`pl-2 ${
-                searchFullWidth ? "w-70 max-w-80 flex" : "hidden  md:block"
+                searchFullWidth ? "w-70 max-w-80 flex" : "hidden md:block"
               }`}
             />
           </div>
         </div>
 
         <div
-          className={`${searchFullWidth ? "hidden" : "block"} pr-5 md:block`}
+          className={`${
+            searchFullWidth ? "hidden" : "block"
+          } ml-auto pr-5 md:block`}
         >
           <Button
             size="medium"
             type="button"
             onClick={() => {}}
-            className="mt-2 h-10"
+            className="  h-10"
           >
             <div className="flex space-x-2 ">
               <PlusCircleIcon className="h-6 w-6" />
