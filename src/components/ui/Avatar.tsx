@@ -20,9 +20,9 @@ export default function Avatar({
     "min-h-[3rem] min-w-[3rem] relative rounded-full overflow-hidden";
 
   const defaultClasses = cn(normal, {
-    "min-h-[2rem] min-w-[2rem]": size === "small",
-    "min-h-[4rem] min-w-[4rem]": size === "medium",
-    "min-h-[5rem] min-w-[5rem]": size === "large",
+    "h-[2rem] w-[2rem]": size === "small",
+    "h-[4rem] w-[4rem]": size === "medium",
+    "h-[5rem] w-[5rem]": size === "large",
     "rounded-sm": rounded === "sm",
     "rounded-md": rounded === "md",
   });

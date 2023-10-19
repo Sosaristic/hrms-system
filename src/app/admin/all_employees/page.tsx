@@ -37,15 +37,14 @@ export default function AllEmployees() {
       <div className="flex flex-col gap-4">
         {dummyEmployees.map((employee) => (
           <Link
-            href={`/admin/all_employees/${employee.employee_id}`}
+            href={`/admin/all_employees/${employee.employee_id}/profile/personal_information`}
             key={employee.employee_id}
-            className="flex items-center gap-4 px-2 font-inter text-xs shadow-sm hover:bg-primary-100"
+            className="flex items-center gap-4 px-2 font-inter text-xs shadow-sm lg:hover:bg-primary-100"
           >
             <div className="w-3/9 flex flex-1 items-center gap-2">
               <Avatar
                 imageUrl={employee.imageUrl}
                 alt={employee.employee_name}
-                size="small"
               />
 
               <p className="text-center">{employee.employee_name}</p>
