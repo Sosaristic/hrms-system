@@ -15,12 +15,14 @@
       brightness(103%) contrast(101%);
   }
   /* employee profile top bar */
-  .employee-profile-top-bar::-webkit-scrollbar {
+  .employee-profile-top-bar::-webkit-scrollbar,
+  .projects::-webkit-scrollbar {
     display: none;
   }
 
   /* Hide scrollbar for IE, Edge and Firefox */
-  .employee-profile-top-bar {
+  .employee-profile-top-bar,
+  .projects {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

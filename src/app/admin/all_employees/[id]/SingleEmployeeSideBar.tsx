@@ -26,9 +26,9 @@ export default function SingleEmployeeSideBar({
     <div
       className={`  ${
         windowSize === "desktop"
-          ? "relative hidden flex-col shadow-sm md:flex md:w-4/12 lg:w-3/12"
+          ? "relative hidden h-fit flex-col shadow-sm md:flex md:w-4/12 lg:w-3/12"
           : "fixed bottom-0 left-0 right-0 z-[100] flex w-full flex-row md:hidden"
-      } gap-2 overflow-hidden rounded-md  `}
+      } gap-2 overflow-hidden rounded-md bg-white  `}
     >
       {asideLinks.map((item) => {
         const active = pathname.includes(item.title);

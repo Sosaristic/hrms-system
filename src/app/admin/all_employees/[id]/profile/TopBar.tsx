@@ -36,9 +36,9 @@ export default function TopBar() {
           <Link
             key={item.id}
             href={`${pathname.slice(0, 32)}/${item.link}`}
-            className={`flex min-w-fit items-center gap-2 px-4 py-3 font-inter text-xs capitalize  ${
+            className={`flex min-w-fit items-center gap-2 px-4 py-3 font-inter text-xs font-[500] capitalize  ${
               active
-                ? "border-b-2 border-b-primary-500 text-primary-500"
+                ? "border-b-[3px] border-b-primary-500 text-primary-500"
                 : "border-b border-b-gray"
             }`}
           >
