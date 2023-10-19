@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss';
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 
 const config: Config = {
   content: [
@@ -8,6 +10,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '290px',
+        ...defaultTheme.screens,
+      },
       colors: {
         primary: {
           100: '#e6e2f8',

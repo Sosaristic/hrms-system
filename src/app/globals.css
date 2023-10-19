@@ -9,4 +9,21 @@
     filter: invert(17%) sepia(50%) saturate(3276%) hue-rotate(245deg)
       brightness(71%) contrast(125%);
   }
+  /* svg active color for employee side bar */
+  .svg-color-employee {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(74deg)
+      brightness(103%) contrast(101%);
+  }
+  /* employee profile top bar */
+  .employee-profile-top-bar::-webkit-scrollbar,
+  .projects::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .employee-profile-top-bar,
+  .projects {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
