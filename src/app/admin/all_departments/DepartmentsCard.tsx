@@ -1,6 +1,6 @@
 import { Avatar } from "@/components";
 import Link from "next/link";
-import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 type MemberProps = {
   employee_name: string;
@@ -27,7 +27,9 @@ export default function DepartmentsCard({
         <span>
           <Link
             className="flex-1 text-primary-400 hover:text-primary-700"
-            href=""
+            href={`/admin/department/${departmentName
+              .split(" ")[0]
+              .toLowerCase()}`}
           >
             View All
           </Link>
@@ -36,23 +38,28 @@ export default function DepartmentsCard({
 
       <div>
         {members.slice(0, 5).map((member) => (
-          <div className="mb-4 flex" key={member.employee_id}>
-            <div className="ml-2">
-              <Avatar
-                className="flex-1"
-                imageUrl={member.imageUrl}
-                size="small"
-                alt="employee image"
-              ></Avatar>
+          <Link
+            key={member.employee_id}
+            href={`/admin/all_employees/${member.employee_id}/profile/personal_information`}
+          >
+            <div className="mb-4 flex lg:hover:bg-primary-100">
+              <div className="ml-2">
+                <Avatar
+                  className="flex-1"
+                  imageUrl={member.imageUrl}
+                  size="small"
+                  alt="employee image"
+                ></Avatar>
+              </div>
+              <div className="ml-3 block flex-1 ">
+                <p>{member.employee_name}</p>
+                <p className="text-gray">{member.department}</p>
+              </div>
+              <span>
+                <ArrowRightIcon className="mr-4 h-6 w-6 flex-1 hover:text-primary-600" />
+              </span>
             </div>
-            <div className="ml-3 block flex-1 ">
-              <p>{member.employee_name}</p>
-              <p className="text-gray">{member.department}</p>
-            </div>
-            <span>
-              <ArrowLongRightIcon className="mr-4 h-6 w-6 flex-1" />
-            </span>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
