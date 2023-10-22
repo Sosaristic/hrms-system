@@ -11,7 +11,7 @@ function CandidatesPage() {
   const noCandidatesShowing = 10;
   const numberOfPages = Math.ceil(candidatesData.length / 10);
   return (
-    <div className="mx-2 my-4 flex flex-col gap-3">
+    <div className="mx-2 my-4 flex flex-col gap-3 overflow-auto">
       <div className="flex flex-1 justify-between gap-2 text-xs text-gray md:text-sm">
         {headerText.map((header, id) => (
           <div className="min-w-[20%] flex-1 truncate md:min-w-[16%]" key={id}>
