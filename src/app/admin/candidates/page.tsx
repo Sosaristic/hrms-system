@@ -1,15 +1,15 @@
 "use client";
-import { Button } from "@/components";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/solid";
+
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
 
 function CandidatesPage() {
-  const numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const noCandidatesShowing = 10;
-  const numberOfPages = Math.ceil(candidatesData.length / 10);
+  const numberArray = [...Array(10)].map((_, index) => index + 1);
+
+  const [noCandidatesShowing, setNoCandidatesShowing] = useState(
+    Math.min(candidatesData.length, 10),
+  );
+
   return (
     <div className="mx-2 my-4 flex flex-col gap-3 overflow-auto">
       <div className="flex flex-1 justify-between gap-2 text-xs text-gray md:text-sm">
@@ -17,7 +17,8 @@ function CandidatesPage() {
           <div className="min-w-[20%] flex-1 truncate md:min-w-[16%]" key={id}>
             {id === 0 ? (
               <div className="items-center justify-center truncate">
-                <input type="checkbox" /> {header}
+                <input type="checkbox" className="checked:accent-primary-500" />{" "}
+                {header}
               </div>
             ) : (
               header
@@ -27,13 +28,14 @@ function CandidatesPage() {
       </div>
 
       <div className="flex-1">
-        {candidatesData.map((candidate, id) => (
+        {candidatesData.slice(0, noCandidatesShowing).map((candidate, id) => (
           <div
             className="mb-4 flex justify-between gap-2 text-xs  md:text-sm"
             key={id}
           >
             <div className="min-w-[20%] flex-1 items-center truncate md:min-w-[16%]">
-              <input type="checkbox" /> {candidate.candidateName}
+              <input type="checkbox" className="checked:accent-primary-500" />{" "}
+              {candidate.candidateName}
             </div>
             <div className="min-w-[20%] flex-1 truncate md:min-w-[16%]">
               {candidate.appliedFor}
@@ -63,10 +65,10 @@ function CandidatesPage() {
       </div>
 
       <div className="flex flex-1 items-center justify-between gap-2 sm:hidden">
-        <a className="border-gray-300 text-gray-700 hover:bg-gray-50 relative ml-3 inline-flex items-center rounded-md border bg-white px-4 py-2 text-sm font-medium">
+        <a className="border-gray-300 text-gray-700 relative ml-3 inline-flex items-center rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-primary-500 hover:text-white">
           Previous
         </a>
-        <a className="border-gray-300 text-gray-700 hover:bg-gray-50 relative mr-3 inline-flex items-center rounded-md border bg-white px-4 py-2 text-sm font-medium">
+        <a className="border-gray-300 text-gray-700 relative mr-3 inline-flex items-center rounded-md border bg-white px-4 py-2 text-sm font-medium  hover:bg-primary-500 hover:text-white">
           Next
         </a>
       </div>
@@ -75,8 +77,16 @@ function CandidatesPage() {
         <span className=" inline-flex flex-1 items-center gap-2 ">
           <p className="mr-2">Showing</p>
 
-          <select name="candidates" id="candidates" value={10}>
-            {numberArray.map((number) => (
+          <select
+            name="candidates"
+            id="candidates"
+            value={noCandidatesShowing}
+            onChange={(event) => {
+              setNoCandidatesShowing(Number(event.target.value));
+            }}
+            className="cursor-pointer focus:bg-primary-500 focus:text-white"
+          >
+            {numberArray.slice(0, candidatesData.length).map((number) => (
               <option value={number} key={number}>
                 {number}
               </option>
@@ -84,23 +94,23 @@ function CandidatesPage() {
           </select>
         </span>
         <span>
-          Showing <b>1</b> to <b>10</b> out of <b>{candidatesData.length}</b>{" "}
-          records
+          Showing <b>1</b> to <b>{noCandidatesShowing}</b> out of{" "}
+          <b>{candidatesData.length}</b> records
         </span>
         <span className="inline-flex items-center gap-2">
-          <ChevronLeftIcon className="h-[1.25rem] w-[1.25rem]" />
+          <ChevronLeftIcon className="h-[1.25rem] w-[1.25rem] cursor-pointer hover:text-primary-900" />
           <span className="inline-flex items-center gap-1">
-            <p className="rounded-md border-[1px] border-primary-500 px-2 py-1">
+            <p className="cursor-pointer rounded-md border-[1px] border-primary-500 px-2 py-1 hover:bg-primary-500">
               1
             </p>
-            <p className="rounded-md border-[1px] border-primary-500 px-2 py-1">
+            <p className="cursor-pointer rounded-md border-[1px] border-primary-500 px-2 py-1 hover:bg-primary-500">
               2
             </p>
-            <p className="rounded-md border-[1px] border-primary-500 px-2 py-1">
+            <p className="cursor-pointer rounded-md border-[1px] border-primary-500 px-2 py-1 hover:bg-primary-500">
               3
             </p>
           </span>
-          <ChevronRightIcon className="h-[1.25rem] w-[1.25rem]" />
+          <ChevronRightIcon className="h-[1.25rem] w-[1.25rem] cursor-pointer hover:text-primary-900" />
         </span>
       </div>
     </div>
