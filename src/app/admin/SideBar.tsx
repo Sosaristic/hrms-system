@@ -34,18 +34,24 @@ const sideBarLinks = [
   },
   {
     id: 5,
+    title: "Candidates",
+    link: "/admin/candidates",
+    imgUrl: "/svg/user.svg",
+  },
+  {
+    id: 6,
     title: "Leaves",
     link: "/admin/leaves",
     imgUrl: "/svg/clipboard.svg",
   },
   {
-    id: 6,
+    id: 7,
     title: "Holidays",
     link: "/admin/holidays",
     imgUrl: "/svg/task.svg",
   },
   {
-    id: 7,
+    id: 8,
     title: "Settings",
     link: "/admin/settings",
     imgUrl: "/svg/setting.svg",
