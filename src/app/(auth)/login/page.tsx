@@ -1,12 +1,14 @@
 "use client";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useFormik } from "formik";
 import Image from "next/image";
 import Link from "next/link";
 import { loginSchema } from "@/components/forms/formValidationSchema";
-
+import axios from "axios";
 import { Button, TextField } from "@/components";
+import { useRouter } from "next/navigation";
+import { parseCookies, setCookie } from "nookies";
 
 type FormValues = {
   email: string;
@@ -14,6 +16,32 @@ type FormValues = {
 };
 
 export default function Layout() {
+  useEffect(() => {
+    const cookies = parseCookies();
+    if (cookies["access"]) {
+      router.push("/admin/dashboard");
+    }
+  }, []);
+  const getUser = async (email: string, password: string) => {
+    setLoginButtonToInvalid();
+    const endpoint: string =
+      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/auth/login` ?? "";
+    const loginData = { email, password };
+
+    try {
+      const response = await axios.post(endpoint, loginData, {
+        withCredentials: true,
+      });
+
+      const data = await response.data;
+      return data;
+    } catch (error) {
+      // console.error("Error during login:", error);
+      throw error;
+    }
+  };
+
+  const router = useRouter();
   const [checked, setChecked] = useState(false);
 
   const formik = useFormik<FormValues>({
@@ -23,8 +51,19 @@ export default function Layout() {
     },
     validationSchema: loginSchema,
     onSubmit: (values) => {
-      // Handle form submission here
-      console.log(values);
+      getUser(values.email, values.password)
+        .then((data) => {
+          setCookie(null, "access", data.user.accessToken, {
+            path: "/",
+            maxAge: 60 * 60 * 24,
+            // httpOnly: true,
+          });
+          router.push("/admin/dashboard");
+        })
+        .catch((error) => {
+          // console.log(error);
+          alert("Invalid Credentials");
+        });
     },
   });
 

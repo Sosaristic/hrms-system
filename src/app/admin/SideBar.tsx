@@ -1,7 +1,8 @@
 "use client";
 import React, { RefObject } from "react";
+import nookies from "nookies";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -64,6 +65,14 @@ type SideBarProps = {
 };
 
 export default function SideBar({ screen, sideBarRef }: SideBarProps) {
+  const router = useRouter();
+
+  const onHandleLogout = () => {
+    nookies.destroy(null, "refresh", { path: "/" });
+    nookies.destroy(null, "access", { path: "/" });
+
+    router.push("/login");
+  };
   const pathname = usePathname();
 
   return (
@@ -121,7 +130,10 @@ export default function SideBar({ screen, sideBarRef }: SideBarProps) {
             <p>HR Manager</p>
           </div>
         </div>
-        <button className="mt-4 flex items-center justify-center gap-4 rounded-2xl border border-primary-500 py-1 font-semibold text-primary-500 md:mt-auto">
+        <button
+          onClick={onHandleLogout}
+          className="mt-4 flex items-center justify-center gap-4 rounded-2xl border border-primary-500 py-1 font-semibold text-primary-500 hover:bg-primary-500 hover:text-dark md:mt-auto"
+        >
           Logout <PowerIcon className="h-6 w-6 stroke-[6px]" />{" "}
         </button>
       </div>
