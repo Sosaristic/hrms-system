@@ -44,7 +44,11 @@ export function ImageUploader() {
                 key={index}
                 className="image-item absolute bottom-0 left-0 right-0 top-0 flex items-center justify-center"
               >
-                <Avatar imageUrl={image.dataURL} alt="" size="medium" />
+                <Avatar
+                  imageUrl={image.dataURL as string}
+                  alt=""
+                  size="medium"
+                />
 
                 <button
                   onClick={() => onImageUpdate(index)}
