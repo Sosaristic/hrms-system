@@ -57,7 +57,7 @@ export default function Layout() {
           {...formik.getFieldProps("email")}
           label="email address"
           type="email"
-          placehoder="email"
+          placeholder="email"
           error={
             formik.errors.email && formik.touched.email && formik.errors.email
           }
@@ -66,7 +66,7 @@ export default function Layout() {
           {...formik.getFieldProps("password")}
           label="Password"
           type="password"
-          placehoder="password"
+          placeholder="password"
           error={
             formik.errors.password &&
             formik.touched.password &&
