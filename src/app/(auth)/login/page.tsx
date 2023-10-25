@@ -16,6 +16,7 @@ type FormValues = {
 };
 
 export default function Layout() {
+  const router = useRouter();
   useEffect(() => {
     const cookies = parseCookies();
     if (cookies["access"]) {
@@ -41,7 +42,6 @@ export default function Layout() {
     }
   };
 
-  const router = useRouter();
   const [checked, setChecked] = useState(false);
 
   const formik = useFormik<FormValues>({
