@@ -1,6 +1,10 @@
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  redirect("/admin");
   return (
-    <div className="min-h-screen px-2 text-xl font-bold py-4 w-5 antialiased text-orange-500">This is the home page</div>
-  )
+    <div className="min-h-screen w-5 px-2 py-4 text-xl font-bold text-orange-500 antialiased">
+      This is the home page
+    </div>
+  );
 }
