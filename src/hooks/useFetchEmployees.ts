@@ -35,7 +35,11 @@ export interface IEmployeeType {
 
 export const fetchEmployees = async () => {
   const endpoint: string =
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/employee` ?? "";
+    `${
+      process.env.SERVER_ENDPOINT ??
+      "https://hmrs-management.onrender.com/api/v1"
+    }/employee` ?? "";
+
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access")?.value;
 
