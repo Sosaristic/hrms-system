@@ -16,7 +16,11 @@ export interface IDepartmentType {
 
 export const fetchDepartments = async () => {
   const endpoint: string =
-    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/department` ?? "";
+    `${
+      process.env.SERVER_ENDPOINT ??
+      "https://hmrs-management.onrender.com/api/v1"
+    }/department` ?? "";
+  console.log(endpoint);
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access")?.value;
 

@@ -26,7 +26,11 @@ export default function Layout() {
   const getUser = async (email: string, password: string) => {
     setLoginButtonToInvalid();
     const endpoint: string =
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/auth/login` ?? "";
+      `${
+        process.env.SERVER_ENDPOINT ??
+        "https://hmrs-management.onrender.com/api/v1"
+      }/auth/login` ?? "";
+    console.log(endpoint);
     const loginData = { email, password };
 
     try {
