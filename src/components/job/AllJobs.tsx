@@ -2,20 +2,6 @@ import { axiosInstance } from "@/lib/axios";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-type JobType = {
-  _id: string;
-  title: string;
-  salary: number;
-  jobType: number;
-  description: string;
-  status: string;
-  department: {
-    _id: string;
-    name: string;
-  };
-  __v: number;
-};
-
 type JobRoleType = {
   job: JobType;
 };

@@ -1,14 +1,15 @@
 "use client";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { TextField } from "..";
 import { axiosInstance } from "@/lib/axios";
 
 type Props = {
   jobId: string;
+  setSuccess: Dispatch<SetStateAction<boolean>>;
 };
 
 const ApplyForm = (props: Props) => {
-  const { jobId } = props;
+  const { jobId, setSuccess } = props;
   const [formValue, setFormValue] = useState({
     name: "",
     email: "",
@@ -36,10 +37,8 @@ const ApplyForm = (props: Props) => {
 
     try {
       const data = await axiosInstance.post("/candidate/register", formData);
-      console.log({ data });
-    } catch (error) {
-      console.log({ error });
-    }
+      setSuccess(true);
+    } catch (error) {}
   };
 
   return (
