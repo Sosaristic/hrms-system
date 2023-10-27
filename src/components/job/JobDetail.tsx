@@ -8,9 +8,7 @@ const SuccessApplication = () => {
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center">
       <div className="flex w-[90%] flex-col gap-4 lg:w-[50%]">
-        <p className="text-[2rem] font-[600]">
-          Your Application is successfull
-        </p>
+        <p className="text-[2rem] font-[600]">Your Application is successful</p>
         <Link
           href={"/job"}
           className="w-fit rounded-md bg-primary-500 p-2 px-4 text-center text-white"

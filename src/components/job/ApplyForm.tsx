@@ -2,6 +2,7 @@
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { TextField } from "..";
 import { axiosInstance } from "@/lib/axios";
+import { toast } from "react-toastify";
 
 type Props = {
   jobId: string;
@@ -15,7 +16,8 @@ const ApplyForm = (props: Props) => {
     email: "",
     phoneNumber: "",
   });
-  const [resumeFile, setResumeFile] = useState("");
+  const [resumeFile, setResumeFile] = useState<File>();
+  const [resumeError, setResumeError] = useState("");
 
   const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,7 +25,8 @@ const ApplyForm = (props: Props) => {
 
   const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    setResumeFile(files[0]);
+    console.log({ files });
+    files?.length && setResumeFile(files[0]);
   };
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,11 +37,21 @@ const ApplyForm = (props: Props) => {
     formData.append("email", formValue.email);
     formData.append("phoneNumber", formValue.phoneNumber);
     formData.append("jobId", jobId);
-
+    if (!resumeFile) {
+      setResumeError("Please upload your resume");
+      return;
+    }
+    if (!formValue.email || !formValue.name || !formValue.phoneNumber) {
+      toast.error("Incomplete information,Kindly fill out all the form. ");
+      return;
+    }
     try {
       const data = await axiosInstance.post("/candidate/register", formData);
       setSuccess(true);
-    } catch (error) {}
+      toast.success("Application Successful");
+    } catch (error) {
+      toast.error(`${error.response.data.message}`);
+    }
   };
 
   return (
@@ -85,6 +98,7 @@ const ApplyForm = (props: Props) => {
           name="resume"
           className="w-full"
         />
+        <small className="text-xs text-red-500">{resumeError}</small>
       </div>
       <button className=" w-full rounded-md bg-primary-500 p-3 text-white md:w-[70%] lg:w-[45%]">
         Submit

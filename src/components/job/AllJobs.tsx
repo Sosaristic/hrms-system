@@ -1,4 +1,3 @@
-import { axiosInstance } from "@/lib/axios";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -10,7 +9,7 @@ const JobRole = (props: JobRoleType) => {
   const { job } = props;
   return (
     <div className="w-full  rounded-md border border-primary-200 p-2 shadow-md md:w-[40%] md:p-4">
-      <div className="flex">
+      <div className=" flex  flex-col sm:flex-row">
         <div className="p-2">
           <EnvelopeIcon className="h-8 w-8" />
         </div>
@@ -19,7 +18,7 @@ const JobRole = (props: JobRoleType) => {
           <p className="text-xs">{job.department.name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-4 p-2">
+      <div className="flex flex-col justify-between gap-4 p-2 sm:flex-row sm:items-center">
         <div className="flex gap-4">
           <p className="rounded-md bg-primary-500 p-2 text-center text-sm text-white">
             {job.jobType}
@@ -41,29 +40,19 @@ const JobRole = (props: JobRoleType) => {
   );
 };
 
-async function getData() {
-  try {
-    const { data } = await axiosInstance.get("/job");
-    if (data.status === "success") {
-      return data.data;
-    } else {
-      throw new Error("Failed to fetch data");
-    }
-  } catch (error) {
-    throw new Error("Failed to fetch data");
-  }
-}
-
-type Props = {};
+type Props = {
+  allJobs: JobType[];
+};
 
 const AllJobs = async (props: Props) => {
-  const allJobs = await getData();
+  const { allJobs } = props;
+
   return (
     <div className="flex flex-col items-center px-[2rem] py-[1rem]">
       <h2 className="md:text-[1.5rem]">
         We currently employing for the following roles:
       </h2>
-      <div className="mt-4 flex w-full flex-col gap-4 md:flex-row md:justify-between lg:w-[90%]">
+      <div className="mt-4 flex w-full flex-col gap-4 md:flex-row md:justify-between lg:w-full lg:flex-wrap">
         {allJobs.map((job: JobType) => (
           <JobRole key={job._id} job={job} />
         ))}
