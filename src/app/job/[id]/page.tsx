@@ -17,13 +17,19 @@ const getData = async (id: string) => {
 };
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  const job = await getData(params.id);
+  let job;
+
+  try {
+    job = await getData(params.id);
+  } catch (err) {
+    console.log(err);
+  }
 
   return (
     <section
       className={cn("mt-[3rem] flex w-full flex-col gap-2 md:mt-[6rem]")}
     >
-      <JobDetail job={job} />
+      {job ? <JobDetail job={job} /> : <div>Error occurred</div>}
     </section>
   );
 };
