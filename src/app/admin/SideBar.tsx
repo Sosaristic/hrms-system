@@ -1,7 +1,8 @@
 "use client";
 import React, { RefObject } from "react";
+import nookies from "nookies";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -34,18 +35,24 @@ const sideBarLinks = [
   },
   {
     id: 5,
+    title: "Candidates",
+    link: "/admin/candidates",
+    imgUrl: "/svg/user.svg",
+  },
+  {
+    id: 6,
     title: "Leaves",
     link: "/admin/leaves",
     imgUrl: "/svg/clipboard.svg",
   },
   {
-    id: 6,
+    id: 7,
     title: "Holidays",
     link: "/admin/holidays",
     imgUrl: "/svg/task.svg",
   },
   {
-    id: 7,
+    id: 8,
     title: "Settings",
     link: "/admin/settings",
     imgUrl: "/svg/setting.svg",
@@ -58,6 +65,14 @@ type SideBarProps = {
 };
 
 export default function SideBar({ screen, sideBarRef }: SideBarProps) {
+  const router = useRouter();
+
+  const onHandleLogout = () => {
+    nookies.destroy(null, "refresh", { path: "/" });
+    nookies.destroy(null, "access", { path: "/" });
+
+    router.push("/login");
+  };
   const pathname = usePathname();
 
   return (
@@ -115,7 +130,10 @@ export default function SideBar({ screen, sideBarRef }: SideBarProps) {
             <p>HR Manager</p>
           </div>
         </div>
-        <button className="mt-4 flex items-center justify-center gap-4 rounded-2xl border border-primary-500 py-1 font-semibold text-primary-500 md:mt-auto">
+        <button
+          onClick={onHandleLogout}
+          className="mt-4 flex items-center justify-center gap-4 rounded-2xl border border-primary-500 py-1 font-semibold text-primary-500 hover:bg-primary-500 hover:text-dark md:mt-auto"
+        >
           Logout <PowerIcon className="h-6 w-6 stroke-[6px]" />{" "}
         </button>
       </div>
