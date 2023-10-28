@@ -10,6 +10,7 @@
     "format:write": "prettier write ."
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@hookform/resolvers": "^3.3.1",
     "@tanstack/react-query": "^4.35.7",
@@ -29,7 +30,9 @@
     "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-flatpickr": "^3.10.13",
     "react-hook-form": "^7.47.0",
+    "react-images-uploading": "^3.1.7",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",

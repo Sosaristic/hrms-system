@@ -4,7 +4,7 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 type TextFieldProps = {
   name: string;
-  placehoder?: string;
+  placeholder?: string;
   label: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -19,7 +19,7 @@ export default function TextField({
   onBlur,
   type,
   label,
-  placehoder,
+  placeholder,
   error,
   value,
 }: TextFieldProps) {
@@ -33,7 +33,7 @@ export default function TextField({
   };
 
   return (
-    <div className="font-inter relative flex flex-col">
+    <div className="relative flex flex-col font-inter">
       <label
         htmlFor="email"
         className=" font-semi-bold ml-1 text-sm font-semibold capitalize text-primary-500"
@@ -49,7 +49,7 @@ export default function TextField({
         <input
           autoComplete="off"
           className="h-full w-full bg-transparent text-dark outline-none placeholder:text-gray"
-          placeholder={placehoder}
+          placeholder={placeholder}
           type={handleInputType(type)}
           onChange={onChange}
           onBlur={onBlur}
@@ -70,7 +70,7 @@ export default function TextField({
           </button>
         )}
       </div>
-      <p className={` font-inter min-h-4  text-xs text-red-500`}>{error}</p>
+      <p className={` min-h-4 font-inter  text-xs text-red-500`}>{error}</p>
     </div>
   );
 }

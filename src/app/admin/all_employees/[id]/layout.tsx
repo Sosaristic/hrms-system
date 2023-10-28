@@ -1,3 +1,4 @@
+"use client";
 import { Avatar, Button } from "@/components";
 import {
   BriefcaseIcon,
@@ -9,14 +10,14 @@ import SingleEmployeeSideBar from "./SingleEmployeeSideBar";
 
 const SingleEmployeeHeader = () => {
   return (
-    <section className="relative flex flex-col xs:flex-row">
-      <div className="mditems-center flex gap-1  px-2">
-        <div className="w-1/4">
+    <section className="relative flex flex-col md:flex-row">
+      <div className="mditems-center flex  w-1/2 gap-1 lg:w-1/3">
+        <div className="relative w-2/4 md:w-2/4">
           <Avatar
             imageUrl="/images/girl.jpg"
             alt=""
             rounded="md"
-            className="vs h-[4rem] w-[3rem] flex-1"
+            className=" flex-1 xs:h-[5rem]  xs:w-[5rem]"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -38,7 +39,7 @@ const SingleEmployeeHeader = () => {
       <Button
         type="button"
         onClick={() => console.log("edit details")}
-        className=" flex w-fit items-center justify-center gap-2 text-xs xs:ml-auto md:self-end"
+        className=" ml-auto flex h-[2rem] w-fit items-center justify-center gap-2 text-xs md:self-end"
       >
         <span>
           <PencilIcon className="h-4 w-4" />

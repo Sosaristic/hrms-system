@@ -2,6 +2,8 @@ import { Avatar } from "@/components";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { fetchEmployees } from "@/hooks/useFetchEmployees";
+import EmployeeCard from "./EmployeeCard";
+import EmployeesTopBar from "./EmployeesTopBar";
 
 const headerText1 = ["Name", "ID", "Dept", "Action"];
 
@@ -9,9 +11,11 @@ export default async function AllEmployees() {
   const employees = await fetchEmployees().catch((error) => {
     console.error("Error fetching employees data");
   });
+  console.log(employees);
 
   return (
     <div>
+      <EmployeesTopBar />
       <div className="text-xm md:text-md relative my-4 flex gap-2  text-gray ">
         {headerText1.map((text, id) => (
           <p key={id} className="min-w-[20%] flex-1 text-center text-sm ">

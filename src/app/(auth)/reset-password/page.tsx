@@ -42,7 +42,7 @@ export default function Page() {
           {...formik.getFieldProps("email")}
           label="email address"
           type="email"
-          placehoder="email"
+          placeholder="email"
           error={
             formik.errors.email && formik.touched.email && formik.errors.email
           }
