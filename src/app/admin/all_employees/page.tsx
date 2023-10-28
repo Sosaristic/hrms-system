@@ -11,6 +11,7 @@ export default async function AllEmployees() {
   const employees = await fetchEmployees().catch((error) => {
     console.error("Error fetching employees data");
   });
+  console.log(employees);
 
   return (
     <div>
