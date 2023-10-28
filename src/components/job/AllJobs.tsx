@@ -19,8 +19,8 @@ const JobRole = (props: JobRoleType) => {
           <p className="text-xs">{job.department.name}</p>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-4 p-2">
-        <div className="flex gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-2 ">
+        <div className="flex  flex-1 gap-4">
           <p className="rounded-md bg-primary-500 p-2 text-center text-sm text-white">
             {job.jobType}
           </p>
@@ -31,7 +31,7 @@ const JobRole = (props: JobRoleType) => {
             Apply
           </Link>
         </div>
-        <p>
+        <p className="flex-1">
           <span>&#8358;</span>
           <span className="">{job.salary}</span>/
           <span className="text-sm">month</span>
@@ -57,17 +57,27 @@ async function getData() {
 type Props = {};
 
 const AllJobs = async (props: Props) => {
-  const allJobs = await getData();
+  let allJobs;
+  try {
+    allJobs = await getData();
+  } catch (err) {
+    console.log(err);
+  }
+
   return (
     <div className="flex flex-col items-center px-[2rem] py-[1rem]">
       <h2 className="md:text-[1.5rem]">
         We currently employing for the following roles:
       </h2>
-      <div className="mt-4 flex w-full flex-col gap-4 md:flex-row md:justify-between lg:w-[90%]">
-        {allJobs.map((job: JobType) => (
-          <JobRole key={job._id} job={job} />
-        ))}
-      </div>
+      {allJobs ? (
+        <div className="mt-4 flex w-full flex-col gap-4 md:flex-row md:justify-between lg:w-[90%]">
+          {allJobs.map((job: JobType) => (
+            <JobRole key={job._id} job={job} />
+          ))}
+        </div>
+      ) : (
+        <div>Error occurred</div>
+      )}
     </div>
   );
 };
