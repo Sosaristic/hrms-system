@@ -15,7 +15,7 @@ const ApplyForm = (props: Props) => {
     email: "",
     phoneNumber: "",
   });
-  const [resumeFile, setResumeFile] = useState("");
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
 
   const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -23,13 +23,18 @@ const ApplyForm = (props: Props) => {
 
   const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    setResumeFile(files[0]);
+    if (files && files[0]) {
+      setResumeFile(files[0]);
+    }
   };
 
   const handleOnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("resume", resumeFile);
+    if (resumeFile) {
+      formData.append("resume", resumeFile);
+    }
+
     formData.append("name", formValue.name);
     formData.append("email", formValue.email);
     formData.append("phoneNumber", formValue.phoneNumber);
