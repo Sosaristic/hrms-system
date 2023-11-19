@@ -33,7 +33,7 @@ export default function TextField({
   };
 
   return (
-    <div className="font-inter relative flex flex-col">
+    <div className="relative flex flex-col font-inter">
       <label
         htmlFor="email"
         className=" font-semi-bold ml-1 text-sm font-semibold capitalize text-primary-500"
@@ -70,7 +70,7 @@ export default function TextField({
           </button>
         )}
       </div>
-      <p className={` font-inter min-h-4  text-xs text-red-500`}>{error}</p>
+      <p className={` min-h-4 font-inter  text-xs text-red-500`}>{error}</p>
     </div>
   );
 }
